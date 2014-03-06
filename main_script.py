@@ -13,6 +13,8 @@ species_list="['hg19', 'gorGor3', 'panTro3', 'nomLeu1']"
 #(should be a single gzipped fasta file per genome, with same genome 
 #versions as the versions used by your maf file, soft masked or unmasked)
 
+subprocess.call(['./chdir.sh'])
+
 '''
 instruction_list=[' operates on three input files.',
 'the first file is a bed formatted list of genes from your reference genome',
