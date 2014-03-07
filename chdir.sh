@@ -1,1 +1,0 @@
-cd script_folder

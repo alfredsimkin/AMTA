@@ -1,4 +1,5 @@
 import subprocess
+import os
 #location of refseq genes bed file.
 refseq_input_bed='human_refseq_bed'
 #location of refseq genes fasta file
@@ -13,16 +14,7 @@ species_list="['hg19', 'gorGor3', 'panTro3', 'nomLeu1']"
 #(should be a single gzipped fasta file per genome, with same genome 
 #versions as the versions used by your maf file, soft masked or unmasked)
 
-subprocess.call(['./chdir.sh'])
-
-'''
-instruction_list=[' operates on three input files.',
-'the first file is a bed formatted list of genes from your reference genome',
-'the second file is a fasta formatted list of the same genes. The third file',
-'is a maf alignment containing your reference genome and several other genomes',
-'The fourth file is a list of the genomes you are interested in predicting transcripts from
-'''
-
+os.chdir('script_folder')
 '''
 coordinate_converter.py operates on the BED formatted file from UCSC to get 
 rid of extra potentially problematic genes (such as noncoding genes like 
@@ -46,24 +38,11 @@ each primate genome.
 
 
 '''
-remove_non_seq.py functions on the UCSC maf files and trims lines that 
-aren't sequence
-'''
-#subprocess.call(['python', 'remove_non_seq.py', data_folder, maf_input])
-
-'''
 filter_for_all_species.py operates on the trimmed maf files, removing maf 
 entries that have missing species from the species in species_list.
 '''
 print "filtering out maf entries that don't have all species present"
 subprocess.call(['python', 'filter_for_all_species.py', data_folder, maf_input, species_list])
-
-'''
-extract_only_all_species.py creates a new maf file consisting only of the 
-maf entries found by filter_for_all_species.py
-'''
-print "now that the filter is finished, applying the filter to make a replacement maf file"
-#subprocess.call(['python', 'extract_only_all_species.py', data_folder, maf_input, maf_species])
 
 '''
 index_all_chunks.py uses the maf file generated with 
@@ -73,12 +52,5 @@ rather than the current strand as MAF does) in each species.
 '''
 print "indexing the chunks and sorting by human coordinates"
 subprocess.call(['python', 'index_all_chunks2.py', data_folder, species_list])
-
-'''
-sort_indexed.py sorts the results of index_all_chunks.py relative to the 
-human genome, from low chromosome number to high chromosome number, and from 
-low start coordinate to high start coordinate
-'''
-#subprocess.call(['python', 'sort_indexed.py', data_folder])
 
 exit()

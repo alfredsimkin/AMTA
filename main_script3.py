@@ -1,10 +1,11 @@
 import subprocess
+import os
 data_folder='../test_data_folder/'
 input_sequence_dict='ancestor_dictionary_nogaps'
 ancestor_dict="{'human':'2', 'chimp':'2', 'gorilla':'1', '2':'1', 'gibbon':'1'}"
 descendant_dict="{'1':['gibbon', 'gorilla', '2'], '2':['human', 'chimp']}"
 
-
+os.chdir('script_folder')
 '''
 count_gains_losses.py uses a dictionary of genes, each of which contains
 species, each of which contains sequence to count how many times every 8mer

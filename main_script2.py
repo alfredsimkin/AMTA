@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 print 'do not use fasta files precomputed by UCSC. Instead, upload the BED',
 print 'file as a custom track and download the resulting coordinates as a fasta file',
@@ -12,6 +13,7 @@ refseq_fasta_file='test_fasta'
 refseq_bed_file='human_refseq_bed'
 treefile=data_folder+'four_species'
 
+os.chdir('script_folder')
 '''
 make_first_lastz_scripts.py operates on the genomes that make up your maf file. 
 You will need to download each genome into a folder, and add the locations
