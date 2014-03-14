@@ -7,14 +7,27 @@ to 10 other primates, downloaded from UCSC in MAF format
 The core of my analysis is done using two publicly available programs, 
 called lastz (used to compare genomes against each other) and dnaml (used to 
 reconstruct hypothetical ancestral DNA sequences from living primate 
-descendants)
+descendants, available from Joe Felsenstein's phylip package). You will need
+to have these programs installed.
 
 There are 3 main scripts needed to get my main results, each of which is a 
 collection of smaller scripts. They're named:
 
-main_script.py
-main_script2.py
-main_script3.py
+prepare_lastz.py
+orthologs_alignments_ancestors.py
+calculate_turnover_rates.py
 
-Each of these scripts has a short description of each of the smaller scripts
-called in comment lines.
+Each of these scripts is a driver for several smaller scripts, described in
+the comments.
+
+Briefly, prepare_lastz.py tidies up a BED file of transcripts in one genome and
+prepares to search other genomes for these transcripts. The program also tidies up
+a MAF file for use later on.
+
+After running lastz on the results of prepare_lastz.py,
+orthologs_alignments_ancestors.py uses stringent filters to remove non 1 to 1 orthologs
+from the dataset, creates alignments of these 1 to 1 orthologs using the MAF file, and
+uses DNAML to reconstruct ancestral transcript states.
+
+calculate_turnover_rates.py operates on the output of orthologs_alignments_ancestors.py
+and calculates how fast every 8mer turns over relative to other highly similar 8mers.
