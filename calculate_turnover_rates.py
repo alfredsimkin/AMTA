@@ -1,6 +1,6 @@
 import subprocess
 import os
-data_folder='../test_data_folder/'
+data_folder='../data_folder/'
 input_sequence_dict='ancestor_dictionary_nogaps'
 ancestor_dict="{'human':'2', 'chimp':'2', 'gorilla':'1', '2':'1', 'gibbon':'1'}"
 descendant_dict="{'1':['gibbon', 'gorilla', '2'], '2':['human', 'chimp']}"
