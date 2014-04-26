@@ -1,3 +1,8 @@
+#this script calculates the cumulative probability of 'observed_successes' success events
+#in len(prob_list)-1 trials, where each trial has a fixed but unique probability
+#of success taken from prob_list (trial n always having probability equal to prob_list[n]).
+#It's an application of a nifty 'dynamic programming' trick Xiaopeng taught me that cuts
+#calculation time from 2**(len(prob_list)-1) down to (len(prob_list)-1)**2
 from decimal import Decimal
 output_file=open('out', 'w')
 prob_list=['1.0', '0.1056', '0.6304', '0.1056', '0.0336', '0.088', '0.4048', '0.6304', '0.2736', '0.4048', '0.1248', '0.088', '0.0448', '0.4048', '0.1456', '0.192', '0.168', '0.664', '0.928', '0.304', '0.192', '0.0576', '0.1248', '0.5952', '0.5584', '0.0448', '0.5584', '0.304', '0.1456', '0.5584', '0.304', '0.016', '0.1056']

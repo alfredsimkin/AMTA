@@ -67,7 +67,7 @@ are annotated with the same name in multiple places in the genome, and, in
 the case of the human genome, 'hap' chromosomes which are alternate haplotypes. 
 3' UTR coordinates are extracted for genes that pass the filters.
 '''
-subprocess.call(['python', 'coordinate_converter2.py', data_folder, refseq_input_bed, refseq_input_fasta])
+subprocess.call(['python', 'coordinate_converter.py', data_folder, refseq_input_bed, refseq_input_fasta])
 
 '''
 filter_for_all_species.py operates on the trimmed maf files, removing maf 
@@ -90,9 +90,9 @@ make_first_lastz_scripts.py operates on the genomes that make up your
 maf file. This program creates a set of lastz commands for each
 genome, which can be run in parallel or serially.
 '''
-#subprocess.call(['rm', data_folder+'lastz_commands'])
-#for genome_folder in genome_paths:
-#	subprocess.call(['python', 'make_first_lastz_scripts.py', data_folder, genome_folder, refseq_fasta_file+'_filtered'])
+subprocess.call(['rm', data_folder+'lastz_commands'])
+for genome_folder in genome_paths:
+	subprocess.call(['python', 'make_first_lastz_scripts.py', data_folder, genome_folder, refseq_input_fasta+'_filtered'])
 
 print 'you will now need to run all of the lastz commands from the "lastz_commands" script',
 print 'within your data folder. You may want to parallelize these commands as lastz commands',
