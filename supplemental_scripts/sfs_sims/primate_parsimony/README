@@ -1,0 +1,29 @@
+Running the parsimony approach has 4 programs:
+primate_parsimony.py
+fasta_to_dict.py
+pattern_distributions.py
+count_nonambig_mutations.py
+
+primate_parsimony.py operates on a string of 0's or 1's. There are as
+many characters as there are species. A 0 represents a species without a
+trait while a 1 represents a species with a trait. presence/absence values
+at any given locus can be represented by a string of 1's and 0's. The
+program starts by creating every possible pattern of 1's and 0's, and then
+removes those patterns one mutational step from being all 1's or all 0's.
+Next, patterns one mutational step from being one mutational step away are
+removed, and so on until no patterns remain. The output is multiple
+dictionaries. The program only needs to be run once on any given phylogeny
+
+fasta_to_dict.py operates on a fasta file of extant species, converting
+the fasta entries into dictionaries
+
+pattern_distributions.py operates on the output dictionary and assesses
+each eightmer for presence/absence values in all species. It outputs a
+file with patterns, and how many times each pattern of 1's and 0's
+occurred. The file is pattern_list
+
+count_nonambig_mutations.py uses the dictionaries from
+primate_parsimony.py and the patterns from pattern_list to examine only
+those patterns with a single smallest number of mutations that could
+explain the data. The resulting mutational steps are recorded, and the
+total number of mutations for each branch is output.

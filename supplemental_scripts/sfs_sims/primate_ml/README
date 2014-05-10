@@ -1,0 +1,20 @@
+To make a maximum likelihood reconstruction of ancestral states using simulated
+data:
+
+create a newick file for dnaml to build a phylogeny, saved as 'intree'
+convert the sfs simulated data to fasta format (sfs_to_fasta.py)
+open the fasta file and change any species names to match the newick file
+convert the fasta file to a dictionary (fasta_to_dict.py)
+convert the dictionary to a phylip file, saved as 'infile' (make_vert_phylip.py)
+run dnaml on the phylip file, with the command dnaml <dnaml_input (only works if
+outfile and outtree already exist, modify <dnaml_input as needed)
+run collect_ancestors.py to get reconstructed ancestors stored as a dictionary (may
+need some adjustment if using a different phylogeny)
+
+run normal scripts on output dictionary:
+
+count_gains_losses.py
+distributions_by_eightmer.py
+distribution_sums.py
+nearest_neighbor_values.py
+counts_by_branch.py

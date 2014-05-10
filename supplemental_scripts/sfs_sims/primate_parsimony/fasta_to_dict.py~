@@ -1,0 +1,10 @@
+#takes primate fasta entries and stores them as a nested dictionary suitable for pattern_distributions.py
+import custom
+import cPickle
+fasta_lists=custom.read_fasta('mod_sfs2.fa')
+gene_dict={}
+gene_dict['fake_gene']={}
+for species in fasta_lists:
+	gene_dict['fake_gene'][species[0]]=species[1]
+cPickle.dump(gene_dict, open('sim_parsimony_dict', 'w'))
+
