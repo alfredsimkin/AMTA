@@ -1,0 +1,13 @@
+input_list=[line.strip().split() for line in open('sfs_input_table')]
+descendant_dict, ancestor_dict={},{}
+for line in input_list:
+	descendant_list=line[2].split('&')
+	if len(descendant_list)>1:
+		descendant_dict[line[0]]=descendant_list
+		for descendant in descendant_list:
+			if descendant in ancestor_dict:
+				print 'error!', descendant
+				exit()
+			ancestor_dict[descendant]=line[0]
+print ancestor_dict
+print descendant_dict
