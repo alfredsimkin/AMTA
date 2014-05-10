@@ -1,3 +1,22 @@
+This set of scripts was developed to accompany my paper, "Inferring the
+evolutionary history of primate microRNA binding sites: overcoming motif
+counting biases." I wrote these scripts to analyze how frequently miRNA binding
+sites are gained and lost within 3' UTRs over evolutionary time within
+primates. I'm hoping others will find these scripts useful to analyze turnover
+rates of other motifs in other regions of the genome and in other species sets.
+These scripts can be reused for any purpose provided my paper is cited.
+
+The first component of my scripts is written to curate orthologous UTRs in
+multiple species using some well-annotated reference species, and then analyze
+the resulting aligned genes using a maximum likelihood approach implemented by
+DNAML. The second component of my scripts (in sfs_sims under supplemental
+scripts) is more loosely arranged to analyze simulated datasets and demonstrate
+flaws in motif-based approaches to phylogenetic reconstruction of ancestral
+states.
+
+The following instructions are for the first component. Other scripts have
+their own README files.
+
 The original input files are:
 1. A list of all Refseq gene annotations from UCSC in BED format
 2. A large sequence alignment file aligning every part of the gorilla genome 
